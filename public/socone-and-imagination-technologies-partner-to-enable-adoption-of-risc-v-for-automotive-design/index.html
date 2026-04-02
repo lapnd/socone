@@ -298,7 +298,51 @@
 <style id="stylableCss_wq7rk"></style>
 <style id="compCssMappers_wq7rk">#wq7rk{width:auto;min-height:40px;}#pageBackground_wq7rk{--bg-position:absolute;--fill-layer-background-overlay-color:transparent;--fill-layer-background-overlay-position:absolute;--bg-overlay-color:rgb(var(--color_11));--bg-gradient:none;}#comp-l7yxxugg{--bg-overlay-color:transparent;--bg-gradient:none;min-width:980px;}#comp-l7yxxugt{--text-direction:var(--wix-opt-in-direction);}</style>
 
-<link rel="stylesheet" type="text/css" href="../assets/static.parastorage.com/services/wix-thunderbolt/dist/group_7.882d8423.chunk.min.css"><meta http-equiv="origin-trial" content="A/VAet/bEjA4ln7DXeiHQE7cBUrzS4f9Qz45yc8fguKgPEio2/c/rEzqRnIPfbgp49o+M2MFkhRKy9Z7LKGPowUAAACLeyJvcmlnaW4iOiJodHRwczovL3N0YXRpYy5wYXJhc3RvcmFnZS5jb206NDQzIiwiZmVhdHVyZSI6IlByZXJlbmRlclVudGlsU2NyaXB0IiwiZXhwaXJ5IjoxNzg4ODI1NjAwLCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><script type="speculationrules">{"prerender_until_script":[{"tag":"mpa-prerender-script-moderate","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":"/socone-and-imagination-technologies-partner-to-enable-adoption-of-risc-v-for-automotive-design"}}]},"eagerness":"moderate"}]}</script></head>
+<link rel="stylesheet" type="text/css" href="../assets/static.parastorage.com/services/wix-thunderbolt/dist/group_7.882d8423.chunk.min.css"><meta http-equiv="origin-trial" content="A/VAet/bEjA4ln7DXeiHQE7cBUrzS4f9Qz45yc8fguKgPEio2/c/rEzqRnIPfbgp49o+M2MFkhRKy9Z7LKGPowUAAACLeyJvcmlnaW4iOiJodHRwczovL3N0YXRpYy5wYXJhc3RvcmFnZS5jb206NDQzIiwiZmVhdHVyZSI6IlByZXJlbmRlclVudGlsU2NyaXB0IiwiZXhwaXJ5IjoxNzg4ODI1NjAwLCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><script type="speculationrules">{"prerender_until_script":[{"tag":"mpa-prerender-script-moderate","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":"/socone-and-imagination-technologies-partner-to-enable-adoption-of-risc-v-for-automotive-design"}}]},"eagerness":"moderate"}]}</script>
+<style id="soc-img-fix">
+  wow-image, [data-image-info] { background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important; }
+  wow-image img, img.bgImage { display: block !important; width: 100% !important; height: 100% !important; object-fit: cover !important; position: absolute; top:0; left:0; }
+</style>
+<script id="soc-wow-image-fix">
+(function() {
+  var IMAGE_MAP = {
+    "11062b_952485dce28e4eac9e9f09d63fdc9ada~mv2.jpg": "/assets/images/hero-bg2.jpg",
+    "11062b_d8c8c150557a41fb986c6162f2556939~mv2.jpg": "/assets/images/hero-bg3.jpg",
+    "nsplsh_0457e3c639c7437c8efd6e5ef2ff72f3~mv2.jpg": "/assets/images/portrait.jpg",
+    "6e2266_63e41ae4f5664badb9dd942b78577bc5~mv2.jpg": "/assets/images/section-bg.jpg",
+    "nsplsh_65a10343f15b4c11921de392829bc419~mv2.jpg": "/assets/images/bg-joshua.jpg",
+    "nsplsh_180cb9475d35470e81293861b8bb812d~mv2.jpg": "/assets/images/bg-mike.jpg",
+    "nsplsh_c08fce552b05491baba77381fe7f365f~mv2.jpg": "/assets/images/hero-bg.jpg",
+    "6e2266_1b304e45d25d4cfaa8c46a2e4372b4d3~mv2.png": "/assets/images/logo.png",
+    "6e2266_4894833edcff4a299b21116f827dadee~mv2.png": "/assets/images/intel-logo.png",
+    "6e2266_dd1fff16d59f4e139a81f3167fae799a~mv2.png": "/assets/images/siemens-logo.png"
+  };
+  function fixAll() {
+    document.querySelectorAll("[data-image-info]").forEach(function(el) {
+      try {
+        var info = JSON.parse(el.getAttribute("data-image-info"));
+        var uri  = (info.imageData || {}).uri || info.uri || "";
+        var local = IMAGE_MAP[uri];
+        if (!local) return;
+        el.style.backgroundImage  = "url('" + local + "')";
+        el.style.backgroundSize   = "cover";
+        el.style.backgroundPosition = "center";
+        var img = el.querySelector("img");
+        if (img) {
+          img.src = local;
+          img.style.cssText = "display:block;width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;";
+        }
+      } catch(e) {}
+    });
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", fixAll);
+  else fixAll();
+  setTimeout(fixAll, 300);
+  setTimeout(fixAll, 1500);
+})();
+</script>
+
+</head>
 <body class="">
 <script type="text/javascript">
     var bodyCacheable = true;
