@@ -1,0 +1,2 @@
+"use strict";(self.webpackJsonp__wix_thunderbolt_app=self.webpackJsonp__wix_thunderbolt_app||[]).push([["2609"],{2277(e,t,r){r.d(t,{T:()=>p});var s=r(26350);let p=(e,{baseMediaUrl:t=s.STATIC_MEDIA_URL,isSEOBot:r=!1})=>{let p=/^[a-z]+:/;return{getPlaceholder:({fittingType:s,src:u,target:_,options:a})=>{let l=e(s,u,_,{...a||{},isSEOBot:r,autoEncode:!0});return l&&l.uri&&!p.test(l.uri)&&(l.uri=`${t}/${l.uri}`),l?.srcset?.dpr&&(l.srcset.dpr=l.srcset.dpr.map(e=>p.test(e)?e:`${t}/${e}`)),l}}}}}]);
+//# sourceMappingURL=imagePlaceholder.a5c38083.chunk.min.js.map

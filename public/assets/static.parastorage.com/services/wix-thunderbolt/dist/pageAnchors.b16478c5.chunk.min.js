@@ -1,0 +1,2 @@
+"use strict";(self.webpackJsonp__wix_thunderbolt_app=self.webpackJsonp__wix_thunderbolt_app||[]).push([["8277"],{32740(e,n,i){Object.defineProperty(n,"__esModule",{value:!0}),n.AnchorsDefinition=void 0,n.AnchorsDefinition=(0,i(24150).defineService)("viewer-core/viewer-service-anchors")},24150(e,n){function i(e,n){return n}Object.defineProperty(n,"__esModule",{value:!0}),n.defineService=function(e){return e},n.implementService=i,i.withConfig=function(){return function(e,n){return n}}}}]);
+//# sourceMappingURL=pageAnchors.b16478c5.chunk.min.js.map

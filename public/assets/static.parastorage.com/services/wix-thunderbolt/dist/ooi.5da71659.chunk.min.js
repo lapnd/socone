@@ -1,0 +1,2 @@
+"use strict";(self.webpackJsonp__wix_thunderbolt_app=self.webpackJsonp__wix_thunderbolt_app||[]).push([["87"],{30671(e,t,p){p.d(t,{Z:()=>r});let r=e=>e.react18Compatible&&(e.experiments["specs.thunderbolt.lazy_load_iframe"]||!s())&&!0,s=()=>{try{return window.self!==window.top}catch{}return!1}}}]);
+//# sourceMappingURL=ooi.5da71659.chunk.min.js.map
