@@ -4,15 +4,18 @@
    on a static GitHub Pages host and returns empty/ok responses.
    This silences console errors without affecting visual rendering. */
 (function () {
-  // Only intercept Wix *backend* API calls that 404 on a static host.
-  // Do NOT intercept /_partials/ — those are Wix JS bundles that load React.
+  // Intercept Wix backend calls that fail on a static host.
+  // NOT /_partials/ — those are real Wix JS bundles that load React.
   var API_PATTERNS = [
     "/_api/v1/access-tokens",
     "/_api/tag-manager",
     "/_api/wix-bi-session",
+    "/_api/public-csm-server",        // CSM fetch — fails without live backend
     "wix-bi-session",
     "fedops-logger",
-    "/wix-thunderbolt-icp"
+    "/wix-thunderbolt-icp",
+    "sentry-next.wixpress.com",        // Wix error logging
+    "/pages/pages/thunderbolt"         // siteassets Thunderbolt config — fails without metaSiteId
   ];
   function isWixApi(url) {
     if (!url) return false;
