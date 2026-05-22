@@ -5,7 +5,7 @@ stages:
 pages:
   stage: deploy
   script:
-    - echo "Deploying static site to GitLab Pages..."
+    - echo "Deploying to GitLab Pages..."
   artifacts:
     paths:
       - public
