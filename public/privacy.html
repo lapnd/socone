@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy | SoC.one</title>
+<meta name="description" content="SoC.one privacy policy, including how to request deletion of your personal data.">
+<link rel="canonical" href="https://www.soc.one/privacy.html">
+<link rel="icon" href="/assets/images/logo.png">
+<link rel="stylesheet" href="/assets/legal.css">
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     SOC 2 EVIDENCE — PRIVACY / DATA-SUBJECT PROCESS  (internal note)
+
+     Scope: www.soc.one is a STATIC site (GitHub Pages + GitLab Pages, no
+     backend, no database, no user accounts). Everything below is implemented
+     with static HTML plus the site's pre-existing form relay.
+
+     1. PUBLIC PRIVACY POLICY .... this page            /privacy.html
+     2. PUBLIC TERMS OF SERVICE .. /terms.html
+     3. DATA DELETION REQUESTS ... /data-deletion.html  (form, linked below)
+        Both documents are reachable from the footer of every page on the site.
+
+     4. SUBMISSION MECHANISM (no new infrastructure introduced)
+        The deletion form POSTs to the SAME Google Apps Script endpoint the
+        site's existing Contact form already uses:
+          https://script.google.com/macros/s/AKfycbz...NErA/exec
+        That Apps Script relays the submission into the team's Google Chat
+        channel. Payload shape is unchanged ({name, email, message, website});
+        deletion requests are identified by the "[DATA DELETION REQUEST]"
+        prefix written into the message body, so they are filterable in Chat.
+
+     5. TRACKING / LOGGING — IMPORTANT, READ BEFORE ATTESTING
+        The static website itself performs NO logging. It cannot: there is no
+        server or database under our control in the request path. The record of
+        a request is created by the receiving systems, not by this page:
+          - the Google Apps Script execution log (Apps Script > Executions), and
+          - the message delivered into the monitored Google Chat channel.
+        Those two are the intake audit trail. Retention and case tracking
+        through to completion are a MANUAL control owned by the privacy team,
+        documented in the "How we handle your request" table on this page and
+        on /data-deletion.html.
+
+     6. PROCESS: Received -> Verified -> Processed -> Completed/Rejected
+        with the target turnaround stated publicly on both pages.
+
+     Auditor walkthrough: open /privacy.html and /data-deletion.html, submit a
+     test request, then show the corresponding Apps Script execution entry and
+     the Chat message, then the deletion register entry closing the case.
+════════════════════════════════════════════════════════════════════════════ -->
+</head>
+<body>
+
+<header class="soc-header">
+  <div class="soc-header-inner">
+    <a href="/" aria-label="SoC.one home"><img src="/assets/images/logo.png" alt="SoC.one" width="153" height="60"></a>
+    <nav class="soc-nav">
+      <a href="/">Home</a>
+      <a href="/about-3/">About</a>
+      <a href="/privacy.html" aria-current="page">Privacy Policy</a>
+      <a href="/terms.html">Terms of Service</a>
+      <a href="/data-deletion.html">Data Deletion</a>
+    </nav>
+  </div>
+</header>
+
+<main class="soc-main">
+
+  <h1>Privacy Policy</h1>
+  <div class="soc-rule"></div>
+  <p class="soc-updated">Last updated: 20 August 2026</p>
+
+  <p>
+    This policy explains what personal data SoC.one Inc. (&ldquo;SoC.one&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;)
+    collects through this website, why we collect it, and how you can ask us to delete it.
+  </p>
+
+  <h2>The short version</h2>
+  <p>
+    <strong>www.soc.one is a static website.</strong> It has no user accounts, no login, no shopping cart
+    and no database. We do not sell personal data, and we do not use the site for advertising or
+    cross-site tracking. The only personal data we receive through this website is what you choose to
+    type into one of our forms and send to us.
+  </p>
+
+  <h2>What we collect</h2>
+
+  <h3>Information you send us</h3>
+  <p>
+    When you submit the <a href="/#soc-contact-section">contact form</a> or the
+    <a href="/data-deletion.html">data deletion request form</a>, we receive the information you enter
+    — typically your name, your email address, and the content of your message. We ask only for what we
+    need in order to reply to you or to act on your request.
+  </p>
+
+  <h3>Technical information</h3>
+  <p>
+    Our hosting providers (GitHub Pages and GitLab Pages) process standard technical request data such as
+    IP address and browser user-agent in order to serve the site and to protect it from abuse. This is
+    handled by those providers under their own privacy terms; we do not maintain our own web analytics
+    profile of you.
+  </p>
+  <p>
+    This site also carries an error-monitoring script inherited from the platform the site was originally
+    built on. If a page fails in your browser, that script may transmit technical diagnostic information
+    (such as the error, the page URL and browser details) to the monitoring service. It is used to detect
+    broken pages, not to identify or profile visitors.
+  </p>
+
+  <h2>How your information is handled</h2>
+  <p>
+    Form submissions are relayed to a monitored internal channel used by the SoC.one team so that a
+    person can read and act on them. Access to that channel is limited to staff who need it. We keep
+    correspondence only for as long as it is needed for the purpose you sent it, or for as long as we
+    are required to keep it.
+  </p>
+  <p>We do not share your information with third parties except:</p>
+  <ul>
+    <li>service providers who operate the infrastructure described above, acting on our instructions;</li>
+    <li>where we are required to do so by law.</li>
+  </ul>
+
+  <h2 id="data-deletion">Data Deletion Requests</h2>
+  <div class="soc-rule"></div>
+
+  <p>
+    <strong>You can ask us to delete the personal data we hold about you.</strong> This applies to anything
+    you have previously sent us through this website — for example a message submitted through the contact
+    form, and the email address and name attached to it.
+  </p>
+
+  <div class="soc-callout">
+    <h3 style="margin-top:0">Request deletion of your data</h3>
+    <p>
+      Use the form on our data deletion page. It asks only for your name, your email address, and a short
+      description of what you would like deleted.
+    </p>
+    <p style="margin-bottom:0">
+      <a href="/data-deletion.html"><strong>Open the Data Deletion Request form &rarr;</strong></a>
+    </p>
+  </div>
+
+  <p>
+    You may also email your request to <a href="mailto:info@soc.one">info@soc.one</a> with the subject line
+    <em>Data Deletion Request</em>. Either route reaches the same team.
+  </p>
+
+  <h3>How we handle your request</h3>
+  <p>Every deletion request moves through four stages, and is tracked until it reaches a final state:</p>
+
+  <div class="soc-table-wrap">
+    <table class="soc-table">
+      <thead>
+        <tr><th style="width:22%">Stage</th><th>What happens</th><th style="width:24%">Target</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Received</strong></td>
+          <td>Your request arrives in the monitored channel used by our privacy team and is entered in our deletion register.</td>
+          <td>Acknowledged within 5 business days</td>
+        </tr>
+        <tr>
+          <td><strong>Verified</strong></td>
+          <td>We confirm the request genuinely comes from you, normally by replying to the email address you gave us. This protects you from someone else deleting your data.</td>
+          <td>Within 10 business days</td>
+        </tr>
+        <tr>
+          <td><strong>Processed</strong></td>
+          <td>We locate the data covered by your request and delete it from the systems we control, or restrict it where we are legally required to retain it.</td>
+          <td>Within 30 days of verification</td>
+        </tr>
+        <tr>
+          <td><strong>Completed / Rejected</strong></td>
+          <td>We write to you confirming what was deleted. If we cannot action the request — for example we hold no data matching it, verification failed, or the law requires us to keep it — we tell you that and why.</td>
+          <td>Within 30 days of verification</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    <strong>Please note:</strong> because this website is static, the site itself does not store your request
+    or keep a log. The record is created when your request reaches our team, and it is tracked from there
+    through to completion. Requests sent to <a href="mailto:info@soc.one">info@soc.one</a> are retained in
+    that mailbox until the request is closed.
+  </p>
+
+  <h2>Your other rights</h2>
+  <p>
+    Depending on where you live, you may also have the right to ask what personal data we hold about you,
+    to have it corrected, to object to how we use it, or to receive a copy. Use the same contact routes
+    above and tell us which right you want to exercise.
+  </p>
+
+  <h2>Children</h2>
+  <p>This website is aimed at businesses and is not directed at children.</p>
+
+  <h2>Changes to this policy</h2>
+  <p>
+    If we change this policy we will update the date at the top of this page. Material changes will be
+    highlighted on the site.
+  </p>
+
+  <h2>Contact us</h2>
+  <p>
+    SoC.one Inc.<br>
+    1975 Hamilton Ave, San Jose, CA 95120<br>
+    (408) 375-8287<br>
+    <a href="mailto:info@soc.one">info@soc.one</a>
+  </p>
+
+  <p class="soc-updated" style="margin-top:40px">
+    See also our <a href="/terms.html">Terms of Service</a>.
+  </p>
+
+</main>
+
+<footer class="soc-footer">
+  <p class="soc-footer-mail"><a href="mailto:info@SoC.one">info@SoC.one</a></p>
+  <p class="soc-footer-legal">
+    <a href="/privacy.html">Privacy Policy</a>|<a href="/terms.html">Terms of Service</a>|<a href="/data-deletion.html">Data Deletion Request</a>
+  </p>
+  <p class="soc-footer-copy">&copy;2022&ndash;<span class="copy-year">2026</span> by SoC.one.</p>
+</footer>
+
+<script>document.querySelectorAll(".copy-year").forEach(function(el){el.textContent=new Date().getFullYear();});</script>
+
+</body>
+</html>

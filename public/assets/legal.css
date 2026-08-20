@@ -1,0 +1,235 @@
+/* ---------------------------------------------------------------------------
+   legal.css — shared styling for the standalone legal pages
+   (privacy.html, terms.html, data-deletion.html)
+
+   Design tokens are copied from the cloned site's own theme variables so these
+   hand-written pages match the rest of soc.one:
+     headings  --font_3 / --font_5  -> raleway
+     body      --font_8            -> avenir-lt-w01_35-light1475496
+     text      --color_15          -> #000
+     accent    Send button          -> #f47721
+     panel     contact panel        -> #f1f1f1
+     content width                  -> 980px
+   Fonts are the copies already vendored under /assets/ — no external requests.
+--------------------------------------------------------------------------- */
+
+@font-face {
+  font-family: "avenir-lt-w01_35-light1475496";
+  src: url("/assets/static.parastorage.com/fonts/v2/af36905f-3c92-4ef9-b0c1-f91432f16ac1/v1/avenir-lt-w01_35-light1475496.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "avenir-lt-w01_85-heavy1475544";
+  src: url("/assets/static.parastorage.com/fonts/v2/74290729-59ae-4129-87d0-2eec3974dce1/v1/avenir-lt-w01_85-heavy1475544.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "raleway";
+  src: url("/assets/static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff2/s/raleway/v26/1Ptug8zYS_SKggPNyC0IT4ttDfA.woff2") format("woff2");
+  font-display: swap;
+}
+
+:root {
+  --soc-accent: #f47721;
+  --soc-panel: #f1f1f1;
+  --soc-border: #d8d8d8;
+  --soc-text: #000;
+  --soc-muted: #555;
+  --soc-width: 980px;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: #fff;
+  color: var(--soc-text);
+  font: normal normal normal 18px/1.75em avenir-lt-w01_35-light1475496, sans-serif;
+}
+
+/* --- header ------------------------------------------------------------- */
+
+.soc-header {
+  border-bottom: 1px solid var(--soc-border);
+  background: #fff;
+}
+
+.soc-header-inner {
+  max-width: var(--soc-width);
+  margin: 0 auto;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.soc-header img { display: block; width: 153px; height: 60px; object-fit: contain; }
+
+.soc-nav { display: flex; gap: 28px; flex-wrap: wrap; }
+
+.soc-nav a {
+  color: var(--soc-text);
+  text-decoration: none;
+  font-size: 15px;
+  letter-spacing: .02em;
+}
+
+.soc-nav a:hover,
+.soc-nav a[aria-current="page"] { color: var(--soc-accent); }
+
+/* --- content ------------------------------------------------------------ */
+
+.soc-main {
+  max-width: var(--soc-width);
+  margin: 0 auto;
+  padding: 56px 24px 72px;
+}
+
+.soc-main h1 {
+  font: normal normal normal 50px/1.34em raleway, sans-serif;
+  margin: 0 0 12px;
+}
+
+.soc-main h2 {
+  font: normal normal normal 28px/1.375em raleway, sans-serif;
+  margin: 44px 0 12px;
+}
+
+.soc-main h3 {
+  font: normal normal normal 22px/1.41em raleway, sans-serif;
+  margin: 28px 0 8px;
+}
+
+.soc-rule { width: 60px; height: 3px; background: var(--soc-accent); margin: 0 0 28px; }
+
+.soc-updated { color: var(--soc-muted); font-size: 15px; margin: 0 0 28px; }
+
+.soc-main p, .soc-main li { font-size: 18px; line-height: 1.75em; }
+
+/* Long unbroken strings (email addresses, references) must never push the
+   page into horizontal scroll on a narrow device. */
+.soc-main, .soc-footer { overflow-wrap: anywhere; }
+
+.soc-main a { color: var(--soc-text); text-decoration: underline; }
+
+.soc-main a:hover { color: var(--soc-accent); }
+
+.soc-main ul, .soc-main ol { padding-left: 22px; }
+
+.soc-main li { margin-bottom: 8px; }
+
+.soc-callout {
+  background: var(--soc-panel);
+  border-left: 3px solid var(--soc-accent);
+  padding: 24px 28px;
+  margin: 28px 0;
+}
+
+.soc-callout > :first-child { margin-top: 0; }
+.soc-callout > :last-child { margin-bottom: 0; }
+
+/* process table: Received -> Verified -> Processed -> Completed/Rejected */
+
+.soc-table-wrap { overflow-x: auto; margin: 24px 0; }
+
+.soc-table { border-collapse: collapse; width: 100%; min-width: 560px; }
+
+.soc-table th, .soc-table td {
+  border: 1px solid var(--soc-border);
+  padding: 12px 14px;
+  text-align: left;
+  font-size: 16px;
+  line-height: 1.6em;
+  vertical-align: top;
+}
+
+.soc-table th { background: var(--soc-panel); font-family: avenir-lt-w01_85-heavy1475544, sans-serif; }
+
+/* --- form --------------------------------------------------------------- */
+
+.soc-form { display: flex; flex-direction: column; gap: 18px; margin-top: 8px; }
+
+.soc-row { display: flex; gap: 18px; flex-wrap: wrap; }
+
+.soc-field { flex: 1; min-width: 220px; display: flex; flex-direction: column; }
+
+.soc-field label { font-size: 14px; margin-bottom: 8px; }
+
+.soc-field input,
+.soc-field textarea,
+.soc-field select {
+  width: 100%;
+  padding: 10px 12px;
+  background: #fff;
+  border: 1px solid var(--soc-text);
+  color: var(--soc-text);
+  font: normal normal normal 15px/1.6em avenir-lt-w01_35-light1475496, sans-serif;
+}
+
+.soc-field textarea { resize: vertical; min-height: 140px; }
+
+.soc-field input:focus,
+.soc-field textarea:focus,
+.soc-field select:focus { outline: 2px solid var(--soc-accent); outline-offset: 1px; }
+
+.soc-hp { position: absolute; left: -9999px; top: -9999px; height: 0; overflow: hidden; opacity: 0; }
+
+.soc-submit {
+  align-self: flex-start;
+  padding: 12px 40px;
+  background: var(--soc-accent);
+  color: #fff;
+  border: none;
+  font: normal normal normal 15px/1.6em avenir-lt-w01_35-light1475496, sans-serif;
+  letter-spacing: .5px;
+  cursor: pointer;
+}
+
+.soc-submit:disabled { opacity: .6; cursor: not-allowed; }
+
+.soc-status { min-height: 24px; font-size: 15px; margin: 0; }
+
+.soc-status.is-error { color: #c0392b; }
+.soc-status.is-ok { color: #1e7e34; }
+
+.soc-thanks {
+  display: none;
+  background: var(--soc-panel);
+  border-left: 3px solid var(--soc-accent);
+  padding: 28px;
+}
+
+.soc-thanks h2 { margin-top: 0; }
+
+/* --- footer ------------------------------------------------------------- */
+
+.soc-footer {
+  border-top: 1px solid var(--soc-border);
+  padding: 44px 24px 56px;
+  text-align: center;
+}
+
+.soc-footer a { color: var(--soc-text); text-decoration: underline; }
+
+.soc-footer a:hover { color: var(--soc-accent); }
+
+.soc-footer-mail { font-size: 15px; line-height: 1.88em; margin: 0 0 10px; }
+
+.soc-footer-legal { font-size: 14px; line-height: 1.79em; margin: 0 0 10px; }
+
+.soc-footer-legal a { margin: 0 6px; }
+
+.soc-footer-copy { font-size: 14px; line-height: 1.79em; margin: 0; }
+
+@media (max-width: 700px) {
+  .soc-main { padding: 40px 20px 56px; }
+  .soc-main h1 { font-size: 36px; }
+  .soc-main h2 { font-size: 24px; }
+  .soc-header-inner { padding: 16px 20px; }
+}

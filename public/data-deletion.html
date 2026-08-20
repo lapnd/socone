@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Data Deletion Request | SoC.one</title>
+<meta name="description" content="Request deletion of the personal data SoC.one holds about you.">
+<link rel="canonical" href="https://www.soc.one/data-deletion.html">
+<link rel="icon" href="/assets/images/logo.png">
+<link rel="stylesheet" href="/assets/legal.css">
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     SOC 2 EVIDENCE — DATA DELETION REQUEST FORM  (internal note)
+
+     WHAT THIS PAGE IS
+     Public, unauthenticated form letting any data subject request deletion of
+     their personal data. Linked from /privacy.html ("Data Deletion Requests")
+     and from the footer of every page on the site.
+
+     DATA MINIMISATION
+     Three fields only — name, email, description of the request. Nothing else
+     is collected. Email is required because it is both the identifier we match
+     against and the channel used to verify the requester (see "Verified").
+     A honeypot field ("website") is included for spam suppression, matching the
+     pattern already used by the site's contact form.
+
+     SUBMISSION MECHANISM — REUSED, NOT NEW
+     POSTs to the SAME Google Apps Script endpoint the existing contact form
+     uses. No backend, database, API or third-party form service was added:
+       ENDPOINT = https://script.google.com/macros/s/AKfycbz...NErA/exec
+     Payload shape is identical to the contact form ({name,email,message,
+     website}) so the receiving Apps Script needs NO change. The request is
+     made identifiable in the channel by prefixing the message body with
+     "[DATA DELETION REQUEST]" plus a client-generated reference and timestamp.
+     Content-Type is text/plain to avoid a CORS preflight — same as contact.
+
+     FALLBACK
+     If the endpoint is unreachable or JavaScript is unavailable, the page
+     surfaces a mailto: fallback to info@soc.one with a pre-filled subject, so
+     the request path never silently dies. Requests arriving by email are
+     tracked in that mailbox until closed.
+
+     TRACKING / LOGGING — BE PRECISE WHEN ATTESTING
+     This static page does NOT log anything. It cannot — no server or database
+     of ours sits in the request path, and no claim to the contrary should be
+     made. The auditable intake record is produced downstream:
+       (a) Google Apps Script execution log (Apps Script > Executions), and
+       (b) the message delivered into the monitored Google Chat channel,
+       (c) or the info@soc.one mailbox when the fallback is used.
+     Case tracking from intake to closure is a MANUAL control owned by the
+     privacy team, recorded in the deletion register. The four stages and their
+     target turnarounds are published on this page and on /privacy.html.
+
+     PROCESS: Received -> Verified -> Processed -> Completed/Rejected
+
+     AUDITOR WALKTHROUGH
+     1. Show this page is publicly reachable and linked from the site footer.
+     2. Submit a test request.
+     3. Show the matching Apps Script execution entry and the Chat message.
+     4. Show the deletion register row moving through the four stages to a
+        final state, with the completion notice sent to the requester.
+════════════════════════════════════════════════════════════════════════════ -->
+</head>
+<body>
+
+<header class="soc-header">
+  <div class="soc-header-inner">
+    <a href="/" aria-label="SoC.one home"><img src="/assets/images/logo.png" alt="SoC.one" width="153" height="60"></a>
+    <nav class="soc-nav">
+      <a href="/">Home</a>
+      <a href="/about-3/">About</a>
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms of Service</a>
+      <a href="/data-deletion.html" aria-current="page">Data Deletion</a>
+    </nav>
+  </div>
+</header>
+
+<main class="soc-main">
+
+  <h1>Data Deletion Request</h1>
+  <div class="soc-rule"></div>
+
+  <p>
+    Use this form to ask us to delete the personal data SoC.one holds about you &mdash; for example a message
+    you previously sent us through this website, and the name and email address attached to it. This is a
+    free service and you do not need an account.
+  </p>
+  <p>
+    We ask for the minimum needed to find your data and confirm the request is really from you. See our
+    <a href="/privacy.html#data-deletion">Privacy Policy</a> for the full detail.
+  </p>
+
+  <section id="soc-form-block">
+    <h2>Your request</h2>
+
+    <form id="soc-del-form" class="soc-form" novalidate>
+      <div class="soc-row">
+        <div class="soc-field">
+          <label for="soc-del-name">Name</label>
+          <input id="soc-del-name" name="name" type="text" autocomplete="name">
+        </div>
+        <div class="soc-field">
+          <label for="soc-del-email">Email address <span aria-hidden="true">*</span></label>
+          <input id="soc-del-email" name="email" type="email" autocomplete="email" required aria-required="true">
+        </div>
+      </div>
+
+      <div class="soc-field">
+        <label for="soc-del-message">What would you like us to delete? <span aria-hidden="true">*</span></label>
+        <textarea id="soc-del-message" name="message" rows="6" required aria-required="true"
+          placeholder="For example: please delete the enquiry I sent from this email address in June, and any contact details you kept from it."></textarea>
+      </div>
+
+      <!-- Honeypot: hidden from real users, visible to bots -->
+      <div class="soc-hp" aria-hidden="true">
+        <label for="soc-del-website">Leave this blank</label>
+        <input id="soc-del-website" name="website" type="text" tabindex="-1" autocomplete="off" value="">
+      </div>
+
+      <button id="soc-del-submit" class="soc-submit" type="submit">Submit request</button>
+      <p id="soc-del-status" class="soc-status" role="status" aria-live="polite"></p>
+    </form>
+
+    <noscript>
+      <div class="soc-callout">
+        <p style="margin:0">
+          This form needs JavaScript. You can send your request by email instead &mdash;
+          <a href="mailto:info@soc.one?subject=Data%20Deletion%20Request">info@soc.one</a>
+          with the subject &ldquo;Data Deletion Request&rdquo;. Please include the email address your data is
+          associated with and what you would like deleted.
+        </p>
+      </div>
+    </noscript>
+  </section>
+
+  <section id="soc-thanks" class="soc-thanks" tabindex="-1">
+    <h2>Your request has been received</h2>
+    <p id="soc-thanks-ref"></p>
+    <p>
+      A member of the SoC.one privacy team will review it. We will email you at the address you gave us to
+      confirm the request is yours before we delete anything &mdash; please look out for that message, as we
+      cannot proceed without it.
+    </p>
+    <p style="margin-bottom:0">
+      Keep the reference above for your records. If you do not hear from us within 5 business days, email
+      <a href="mailto:info@soc.one?subject=Data%20Deletion%20Request">info@soc.one</a>.
+    </p>
+  </section>
+
+  <h2>What happens after you submit</h2>
+  <p>Your request moves through four stages, and we track it until it reaches a final state:</p>
+
+  <div class="soc-table-wrap">
+    <table class="soc-table">
+      <thead>
+        <tr><th style="width:22%">Stage</th><th>What happens</th><th style="width:24%">Target</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Received</strong></td>
+          <td>Your request reaches the monitored channel used by our privacy team and is entered in our deletion register.</td>
+          <td>Acknowledged within 5 business days</td>
+        </tr>
+        <tr>
+          <td><strong>Verified</strong></td>
+          <td>We email the address you gave us to confirm the request really came from you. This stops someone else from deleting your data.</td>
+          <td>Within 10 business days</td>
+        </tr>
+        <tr>
+          <td><strong>Processed</strong></td>
+          <td>We find the data covered by your request and delete it from the systems we control, or restrict it where the law requires us to keep it.</td>
+          <td>Within 30 days of verification</td>
+        </tr>
+        <tr>
+          <td><strong>Completed / Rejected</strong></td>
+          <td>We confirm in writing what was deleted. If we cannot action the request &mdash; no matching data, verification failed, or a legal retention duty applies &mdash; we tell you that and explain why.</td>
+          <td>Within 30 days of verification</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="soc-callout">
+    <h3 style="margin-top:0">A note on how this works</h3>
+    <p>
+      This website is a static site: it has no database and stores nothing itself. When you press submit, your
+      request is delivered directly to a monitored internal channel that our privacy team works from, and it is
+      recorded there and in our deletion register until it is closed. The website does not keep a copy.
+    </p>
+    <p style="margin-bottom:0">
+      Prefer email? Send your request to
+      <a href="mailto:info@soc.one?subject=Data%20Deletion%20Request">info@soc.one</a>
+      with the subject &ldquo;Data Deletion Request&rdquo;. It reaches the same team and follows the same four stages.
+    </p>
+  </div>
+
+  <p class="soc-updated" style="margin-top:40px">
+    See also our <a href="/privacy.html">Privacy Policy</a> and <a href="/terms.html">Terms of Service</a>.
+  </p>
+
+</main>
+
+<footer class="soc-footer">
+  <p class="soc-footer-mail"><a href="mailto:info@SoC.one">info@SoC.one</a></p>
+  <p class="soc-footer-legal">
+    <a href="/privacy.html">Privacy Policy</a>|<a href="/terms.html">Terms of Service</a>|<a href="/data-deletion.html">Data Deletion Request</a>
+  </p>
+  <p class="soc-footer-copy">&copy;2022&ndash;<span class="copy-year">2026</span> by SoC.one.</p>
+</footer>
+
+<script>document.querySelectorAll(".copy-year").forEach(function(el){el.textContent=new Date().getFullYear();});</script>
+
+<script>
+(function () {
+  // Same Google Apps Script relay the site's contact form already posts to.
+  // It forwards the submission into the team's Google Chat channel.
+  var ENDPOINT = "https://script.google.com/macros/s/AKfycbzgfSxDxVRhBbv_JNzYjYmQI0U8Rsh64YO13Es1OMVTQywDEFv2Y0Og3y7aQpbN7_NErA/exec";
+
+  var form   = document.getElementById("soc-del-form");
+  var block  = document.getElementById("soc-form-block");
+  var thanks = document.getElementById("soc-thanks");
+  var refEl  = document.getElementById("soc-thanks-ref");
+  var btn    = document.getElementById("soc-del-submit");
+  var status = document.getElementById("soc-del-status");
+
+  function setStatus(msg, kind) {
+    status.textContent = msg;
+    status.className = "soc-status" + (kind ? " is-" + kind : "");
+  }
+
+  // Client-side reference so the requester and the privacy team can refer to
+  // the same request. Not a guarantee of uniqueness — it is a human handle.
+  function makeRef() {
+    var d = new Date();
+    var p = function (n) { return (n < 10 ? "0" : "") + n; };
+    var rand = Math.random().toString(36).slice(2, 6).toUpperCase();
+    return "DEL-" + d.getUTCFullYear() + p(d.getUTCMonth() + 1) + p(d.getUTCDate()) + "-" + rand;
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    var name    = document.getElementById("soc-del-name").value.trim();
+    var email   = document.getElementById("soc-del-email").value.trim();
+    var message = document.getElementById("soc-del-message").value.trim();
+    var trap    = document.getElementById("soc-del-website").value;
+
+    if (!email || !message) {
+      setStatus("Please give us your email address and tell us what to delete.", "error");
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setStatus("That email address does not look right — please check it.", "error");
+      return;
+    }
+
+    var ref = makeRef();
+    var body = [
+      "[DATA DELETION REQUEST] " + ref,
+      "Submitted (UTC): " + new Date().toISOString(),
+      "Source: /data-deletion.html",
+      "",
+      "Requester: " + (name || "(not given)"),
+      "Email: " + email,
+      "",
+      "Request:",
+      message,
+      "",
+      "Process: Received -> Verified -> Processed -> Completed/Rejected",
+      "Next action: verify the requester by replying to the email address above."
+    ].join("\n");
+
+    btn.disabled = true;
+    btn.textContent = "Sending…";
+    setStatus("");
+
+    fetch(ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain" }, // text/plain avoids CORS preflight
+      body: JSON.stringify({
+        name: name ? name + " [data deletion request]" : "[data deletion request]",
+        email: email,
+        message: body,
+        website: trap
+      })
+    })
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      if (data && data.ok) {
+        refEl.innerHTML = "Your reference is <strong>" + ref + "</strong>.";
+        block.style.display = "none";
+        thanks.style.display = "block";
+        thanks.focus();
+      } else {
+        throw new Error("relay did not confirm");
+      }
+    })
+    .catch(function () {
+      btn.disabled = false;
+      btn.textContent = "Submit request";
+      status.innerHTML =
+        'We could not send your request just now. Please email it to ' +
+        '<a href="mailto:info@soc.one?subject=Data%20Deletion%20Request%20' + ref + '">info@soc.one</a> ' +
+        '(reference ' + ref + ') and we will handle it the same way.';
+      status.className = "soc-status is-error";
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
